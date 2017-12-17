@@ -1,0 +1,15 @@
+version: '2'
+services:
+  dokuwiki:
+#    environment:
+    image: 'local/home/dokuwiki_v2:0.2'
+    ports:
+      - '80:80'
+#      - '443:443'
+    volumes:
+      - dokuwiki-storage:/var/dokuwiki-storage
+volumes:
+  dokuwiki-storage:
+    driver: local
+
+#docker run -d -p 80:80 -p 443:443 --name dokuwiki --entrypoint /bin/bash  -it  local/home/dokuwiki:${version}
