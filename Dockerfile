@@ -39,8 +39,8 @@ RUN chmod +x /start.sh
 RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php7/php-fpm.ini && \ 
     sed -e "s|;daemonize\s*=\s*yes|daemonize = no|g" -i /etc/php7/php-fpm.conf && \ 
     sed -e "s|listen\s*=\s*127\.0\.0\.1:9000|listen = /var/run/php-fpm7.sock|g" \ 
-        -e "s|;listen\.owner\s*=\s*|listen.owner = |g" \ 
-        -e "s|;listen\.group\s*=\s*|listen.group = |g" \ 
+        -e "s|;listen\.owner\s*=.*|listen.owner = nginx|g" \ 
+        -e "s|;listen\.group\s*=.*|listen.group = nginx|g" \ 
         -e "s|;listen\.mode\s*=\s*|listen.mode = |g" \ 
         -i /etc/php7/php-fpm.d/www.conf
 
